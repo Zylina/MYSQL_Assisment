@@ -13,16 +13,17 @@ CREATE TABLE Trainer_Info (
 desc Trainer_Info;
 
 output:
-Field	Type	Null	Key	Default	Extra
-Salutation	varchar(7)	YES			
-Trainer_Email	varchar(100)	YES			
-Trainer_Experiance	int	YES			
+# Field	Type	Null	Key	Default	Extra
 Trainer_Id	varchar(20)	NO	PRI		
-Trainer_Location	varchar(30)	YES			
+Salutation	varchar(7)	YES			
 Trainer_Name	varchar(30)	YES			
-Trainer_Password	varchar(20)	YES			
-Trainer_Qualification	varchar(100)	YES			
+Trainer_Location	varchar(30)	YES			
 Trainer_Track	varchar(15)	YES			
+Trainer_Qualification	varchar(100)	YES			
+Trainer_Experiance	int	YES			
+Trainer_Email	varchar(100)	YES			
+Trainer_Password	varchar(20)	YES			
+
 
 
 create table Batch_Info(
