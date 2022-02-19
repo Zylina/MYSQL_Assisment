@@ -303,6 +303,21 @@ ROLLBACK;
 
 DROP TABLE LOGIN_DETAILS;
 
+CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON * . * TO 'new_user'@'localhost';
+FLUSH PRIVILEGES;
+GRANT CREATE, SELECT ON * . * TO 'user_name'@'localhost';
+REVOKE ALL PRIVILEGES ON * . * FROM 'user_name'@'localhost';
+DROP USER ‘user_name’@‘localhost’;
+SHOW GRANTS FOR 'user_name'@'localhost';
+
+OUTPUT:
+ Grants for user_name@localhost                                             
+
+ GRANT USAGE ON *.* TO 'user_name'@'localhost'                              
+ GRANT ALL PRIVILEGES ON 'database_name'.* TO 'user_name'@'localhost'.      
+ REVOKE ALL PRIVILEGES ON * . * FROM 'user_name'@'localhost'; 
+
 
 
 
