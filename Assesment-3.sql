@@ -1,12 +1,15 @@
 use assignment;
 select *from trainer_info;
 insert into trainer_info values('F0011','Mrs.','Fara Akahtar' , 'Manglore' , 'Core Java' , 'Master of Computer Applications' , 13 , null, 'fara@209');
+
+/*Write a query which fetches and displays all the trainers who don’t have an email. */
 select trainer_name from trainer_info where trainer_email is  NULL;
 
 output:
 # trainer_name
 Fara Akahtar
 
+/*Write a query which displays the id, name, track and location of all trainers who has Experience > 4 years.*/
 
 select trainer_id,trainer_name,trainer_track,trainer_location from trainer_info where trainer_experiance>4;
 output:
@@ -21,13 +24,13 @@ F006	MANOJ AGRAWAL	Mainframe	Mumbai
 F007	MEENA KULKARNI	Testing	Coimbatore
 F009	SAGAR MENON	Java	Mumbai
 
-
+/*Select all the modules whose duration > 200. */
 select *from module_info where module_duration>200;
 output:
 # Module_Id	module_name	Module_Duration	base_fees
 J2SE	Core Java SE 1.6	288	
 
-
+/*Display the trainer Id, trainer name whose trainer qualification is not ‘Bachelor of Technology’.*/
 select trainer_id, trainer_name from trainer_info where trainer_qualification <> 'Bachelor of Technology';
 output:
 # trainer_id	trainer_name
@@ -36,18 +39,21 @@ F004	NANDINI NAIR
 F005	ANITHA PAREKH
 F009	SAGAR MENON
 
+/*Select all the modules whose duration is in the range 200 and 300 */
 select module_name from module_info where module_duration  between 200 and 300;
 output:
 # module_name
 Android 4.0
 Core Java SE 1.6
 
+/*Display the trainer Id, trainer name whose first name starts with ‘M’ */
 select trainer_id,trainer_name from trainer_info where trainer_name like 'M%';
 output:
 # trainer_id	trainer_name
 F006	MANOJ AGRAWAL
 F007	MEENA KULKARNI
 
+/*Display the trainer Id, trainer name whose first name has a character ‘O’ */
 select trainer_id,trainer_name from trainer_info where trainer_name like '%O%';
 output:
 # trainer_id	trainer_name
@@ -55,6 +61,7 @@ F001	PANKAJ GHOSH
 F006	MANOJ AGRAWAL
 F009	SAGAR MENON
 
+/*Display the names of all the modules where the module name is not null */
 select module_name from module_info where module_name is not null;
 output:
 # module_name
@@ -80,7 +87,34 @@ Attendees
 Course Material
 Environment
 
+/*Develop a query which will display the module name and module Infra fees of the entire module. The infra fee should be rounded to 2 decimal point.*/
+select module_name , round(base_fees,2) from module_info;
+output:
+# module_name	round(base_fees,2)
+Android 4.0	
+.Net Framework 4.0	
+Instructor	
+Course Material	
+Learning Effectiveness	
+Environment	
+Job Impact	
+MAR56	6000
+Job Impact	4000
+The BaseFees Amount for the module name Kantstar	5000
+Advanced Java EE 1.6	
+Core Java SE 1.6	
+JavaFX 2.1	
+MS BI Studio 2008	
+Oracle 10g PL/ SQL	
+Oracle 10g SQL	
+MS Share Point	
+MS SQl Server 2008	
+Attendees	
+Course Material	
+Environment	
 
+
+/*Develop a query which will list all the module id and module names in Module_Info table where in the first letter should be capital letter.*/
 select module_id , upper(substring(module_name,(module_name-1))) from module_info ; 
 output:
 # module_id	upper(substring(module_name,(module_name-1)))
@@ -111,7 +145,7 @@ select curdate();
 output:
 # curdate()
 2022-02-20
-
+/*Develop a query which will display the module id and the number of days between the current date and module start date in associate_status table */
 select module_id , datediff(curdate(),start_date) from associate_status;
 output:
 # module_id	datediff(curdate(),start_date)
@@ -152,7 +186,9 @@ ANDRD4	4278
 ANDRD4	4278
 ANDRD4	3856
 
+/*Develop a query which will concatenate the Module Name and Module id in the following format and display all the modules in the module_info table.*/
 select module_name , module_id , concat(module_name),concat(module_id) from module_info;
+
 output:
 # module_name	module_id	concat(module_name)	concat(module_id)
 Android 4.0	ANDRD4	Android 4.0	ANDRD4
@@ -177,6 +213,7 @@ Attendees	TM001	Attendees	TM001
 Course Material	TM002	Course Material	TM002
 Environment	TM003	Environment	TM003
 
+/*Develop a query which will display all the Module Name in upper case.*/
 select upper(module_name) from module_info;
 output:
 # upper(module_name)
@@ -202,6 +239,7 @@ ATTENDEES
 COURSE MATERIAL
 ENVIRONMENT
 
+/*Develop a query which will display all the characters between 1 and 3 of the Module name column for all the modules in the Module_Info table.*/
  select substring(module_name,1,3) from module_info;
  output:
  # substring(module_name,1,3)
@@ -227,17 +265,28 @@ Att
 Cou
 Env
 
+/*: Develop a query calculate average of all the module base fees, any records whose base fee is null needs to be considered as zero.*/
+select avg(base_fees) from module_info;
+output:
+# avg(base_fees)
+5000
+
  alter table module_info add base_fees int;
  alter table module_info modify base_fees varchar(40);
  select *from module_info;
  insert into module_info values('J233h', 'Job Impact',30,4000),('HIGR56','MAR56',45,6000);
  insert into module_info values ('J23K','The BaseFees Amount for the module name Kantstar',34,5000);
+ 
+ /*Write a query which will convert Base_Fees into Varchar from the Module_info table.And display in the following format
+‘The Base Fees Amount for the module name’ <Module Name>’ is ’<Base Fees>*/
+
  alter table module_info modify module_name varchar(200);
  select   module_name,concat(base_fees) from module_info where module_id = 'J23K'; 
  output:
  # module_name	concat(base_fees)
 The BaseFees Amount for the module name Kantstar	5000
 
+/*: Write a query which will display the total number of records in Module_Info table.*/
  select count(*) as total_records from module_info;
  output:
  # total_records
