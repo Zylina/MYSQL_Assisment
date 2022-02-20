@@ -112,7 +112,46 @@ output:
 # curdate()
 2022-02-20
 
-select module_id datediff(curdate(),start_date) from associate_status;
+select module_id , datediff(curdate(),start_date) from associate_status;
+output:
+# module_id	datediff(curdate(),start_date)
+O10SQL	7737
+O10SQL	7737
+O10PLSQL	7689
+O10PLSQL	7689
+J2SE	7124
+J2SE	7124
+J2EE	5925
+J2EE	5925
+J2EE	5925
+JAVAFX	5922
+JAVAFX	5922
+SQL2008	5358
+SQL2008	5358
+MSBI08	4622
+MSBI08	4622
+ANDRD4	4278
+ANDRD4	4278
+ANDRD4	3856
+O10SQL	7737
+O10SQL	7737
+O10PLSQL	7689
+O10PLSQL	7689
+J2SE	7124
+J2SE	7124
+J2EE	5925
+J2EE	5925
+J2EE	5925
+JAVAFX	5922
+JAVAFX	5922
+SQL2008	5358
+SQL2008	5358
+MSBI08	4622
+MSBI08	4622
+ANDRD4	4278
+ANDRD4	4278
+ANDRD4	3856
+
 select module_name , module_id , concat(module_name),concat(module_id) from module_info;
 output:
 # module_name	module_id	concat(module_name)	concat(module_id)
